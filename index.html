@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaming Forum</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0e0e10;
+      color: #fff;
+    }
+    header {
+      background-color: #1f1f23;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #2c2f33;
+      padding: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .container {
+      padding: 20px;
+    }
+    .post {
+      background-color: #1c1c1e;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .post h2 {
+      margin-top: 0;
+      color: #00ffff;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1f1f23;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .new-post {
+      background-color: #2c2f33;
+      padding: 15px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+    }
+    .new-post input, .new-post textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .new-post button {
+      padding: 10px 20px;
+      background-color: #00ffff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🎮 Gaming Forum
+  </header>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Discussions</a>
+    <a href="#">Tournaments</a>
+    <a href="#">Clans</a>
+    <a href="#">Login</a>
+  </nav>
+  <div class="container">
+    <div class="new-post">
+      <h3>Create a new post</h3>
+      <input type="text" placeholder="Post Title" id="post-title">
+      <textarea placeholder="Write something..." rows="5" id="post-content"></textarea>
+      <button onclick="addPost()">Post</button>
+    </div>
+    <div id="posts">
+      <div class="post">
+        <h2>Welcome to the Forum!</h2>
+        <p>Introduce yourself and tell us what games you love!</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Gaming Forum. All rights reserved.
+  </footer>
+
+  <script>
+    function addPost() {
+      const title = document.getElementById('post-title').value;
+      const content = document.getElementById('post-content').value;
+
+      if (title && content) {
+        const postContainer = document.createElement('div');
+        postContainer.className = 'post';
+
+        const postTitle = document.createElement('h2');
+        postTitle.textContent = title;
+
+        const postContent = document.createElement('p');
+        postContent.textContent = content;
+
+        postContainer.appendChild(postTitle);
+        postContainer.appendChild(postContent);
+
+        document.getElementById('posts').prepend(postContainer);
+
+        document.getElementById('post-title').value = '';
+        document.getElementById('post-content').value = '';
+      } else {
+        alert("Please fill in both fields.");
+      }
+    }
+  </script>
+</body>
+</html>
